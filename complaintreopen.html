@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Ranchi – Citizen Grievance Redressal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: #004080;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header .left {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    header .right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav {
+      background: #0066cc;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li a {
+      padding: 12px 18px;
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+    nav ul li a:hover {
+      background: #004080;
+    }
+    /* Dropdown menu */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      min-width: 200px;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    nav ul li:hover ul {
+      display: block;
+    }
+    nav ul li ul li a {
+      padding: 10px 15px;
+      color: #004080;
+      white-space: nowrap;
+    }
+    nav ul li ul li a:hover {
+      background: #f4f6f9;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+      border-radius: 3px;
+    }
+    .hero {
+      text-align: center;
+      background: linear-gradient(to right, #004080, #0066cc);
+      color: #fff;
+      padding: 50px 20px;
+    }
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+    }
+    .cta-buttons {
+      margin-top: 20px;
+    }
+    .cta-buttons button {
+      background: #ffcc00;
+      border: none;
+      padding: 12px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #004080;
+    }
+    .features, .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #004080;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="left" data-en="📞 Toll-Free: 1800-570-1235" data-hi="📞 टोल-फ्री: 1800-570-1235">📞 Toll-Free: 1800-570-1235</div>
+    <div class="right">
+      <a href="/loginsignup.html" data-en="Login/Sign Up" data-hi="लॉगिन/साइन अप">Login/Sign Up</a> | 
+
+    </div>
+  </header>
+
+  <!-- Navigation with dropdowns -->
+  <nav>
+    <ul>
+      <li><a href="/index.html" data-en="Home" data-hi="होम">Home</a></li>
+      <li>
+        <a href="#" data-en="Complaint Registration ▾" data-hi="शिकायत पंजीकरण ▾">Complaint Registration ▾</a>
+        <ul>
+          <li><a href="#" data-en="Online" data-hi="ऑनलाइन">Online</a></li>
+          <li><a href="#" data-en="Through Phone / Email / WhatsApp" data-hi="फोन / ईमेल / व्हाट्सएप से">Through Phone / Email / WhatsApp</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" data-en="Re-open Complaint ▾" data-hi="शिकायत पुनः खोलें ▾">Re-open Complaint ▾</a>
+        <ul>
+          <li><a href="#" data-en="Online" data-hi="ऑनलाइन">Online</a></li>
+          <li><a href="#" data-en="Through Phone / Email / WhatsApp" data-hi="फोन / ईमेल / व्हाट्सएप से">Through Phone / Email / WhatsApp</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" data-en="Complaint Status ▾" data-hi="शिकायत स्थिति ▾">Complaint Status ▾</a>
+        <ul>
+          <li><a href="#" data-en="Online" data-hi="ऑनलाइन">Online</a></li>
+          <li><a href="#" data-en="Through Phone / Email / WhatsApp" data-hi="फोन / ईमेल / व्हाट्सएप से">Through Phone / Email / WhatsApp</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" data-en="Support ▾" data-hi="सपोर्ट ▾">Support ▾</a>
+        <ul>
+          <li><a href="#" data-en="News" data-hi="समाचार">News</a></li>
+          <li><a href="#" data-en="Zone-wise List" data-hi="क्षेत्रवार सूची">Zone-wise List</a></li>
+          <li><a href="#" data-en="Department-wise Problems" data-hi="विभागवार समस्याएँ">Department-wise Problems</a></li>
+          <li><a href="#" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a></li>
+        </ul>
+      </li>
+      <li><a href="#" data-en="Contact" data-hi="संपर्क">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 data-en="Smart Analysis & Service Transformation Hub" data-hi="स्मार्ट एनालिसिस और सेवा परिवर्तन हब">Smart Analysis & Service Transformation Hub</h1>
+    <h3 data-en="Citizen Grievance Redressal System" data-hi="नागरिक शिकायत निवारण प्रणाली">Citizen Grievance Redressal System</h3>
+    <p data-en="This is your one-stop platform for seamless citizen grievance redressal. Easily register complaints, track status, and re-open issues if not resolved." 
+       data-hi="यह आपका एकमात्र प्लेटफॉर्म है नागरिक शिकायत निवारण के लिए। आसानी से शिकायत दर्ज करें, स्थिति देखें और समाधान न होने पर शिकायत को पुनः खोलें।">
+       This is your one-stop platform for seamless citizen grievance redressal. Easily register complaints, track status, and re-open issues if not resolved.
+    </p>
+    <div class="cta-buttons">
+      <button data-en="Register Complaint" data-hi="शिकायत दर्ज करें">Register Complaint</button>
+      <button data-en="Check Status" data-hi="स्थिति देखें">Check Status</button>
+      <button data-en="Reopen Complaint" data-hi="शिकायत पुनः खोलें">Reopen Complaint</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Ranchi Municipal Corporation | All Rights Reserved</p>
+  </footer>
+
+  <!-- Language Switcher Script -->
+  <script>
+    const switcher = document.getElementById("languageSwitcher");
+    switcher.addEventListener("change", () => {
+      const lang = switcher.value;
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+    });
+  </script>
+
+</body>
+</html>

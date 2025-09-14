@@ -1,0 +1,245 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Re-Open Complaint - Phone / Email / WhatsApp</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif}
+    body{
+      background:linear-gradient(135deg,#e6f0ff,#f4f6f9);
+      color:#333;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    /* Floating Background Shapes */
+    .shape{
+      position:absolute;border-radius:50%;opacity:0.15;z-index:-1;
+      animation:float 6s ease-in-out infinite alternate;
+    }
+    .shape1{width:250px;height:250px;background:#1976d2;top:-60px;left:-60px;}
+    .shape2{width:200px;height:200px;background:#2196f3;bottom:50px;right:-70px;animation-delay:2s;}
+    .shape3{width:150px;height:150px;background:#ffd700;top:180px;right:70px;animation-delay:4s;}
+    @keyframes float{0%{transform:translateY(0);}100%{transform:translateY(20px);}}
+
+    /* Header */
+    header{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:15px 25px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      box-shadow:0 4px 12px rgba(0,0,0,0.25);
+      animation:fadeInDown 1s ease;
+    }
+    header img{height:55px;margin-right:10px;}
+    nav a{
+      color:#fff;margin:0 15px;font-weight:600;text-decoration:none;transition:.3s;
+    }
+    nav a:hover{color:#ffeb3b;}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+
+    /* Breadcrumb Box */
+    .breadcrumb-box{
+      margin:25px auto;
+      max-width:1000px;
+      border:3px solid transparent;
+      border-radius:14px;
+      padding:18px 22px;
+      font-weight:600;
+      background:#fff;
+      box-shadow:0 6px 16px rgba(0,0,0,0.15);
+      animation:fadeUp 1s ease;
+      border-image:linear-gradient(90deg,#1976d2,#2196f3,#ffd700) 1;
+    }
+    .breadcrumb-box h3{
+      font-size:1.8rem;
+      margin-bottom:8px;
+      color:#0056b3;
+      font-weight:700;
+      text-align:center;
+      letter-spacing:0.5px;
+    }
+    .breadcrumb-box p{
+      font-size:0.95rem;
+      text-align:center;
+      color:#333;
+    }
+    .breadcrumb-box span{color:#1976d2;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+    /* Main Section */
+    .section{
+      max-width:1000px;
+      margin:20px auto 50px;
+      padding:20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
+    .card{
+      background:rgba(255,255,255,0.95);
+      padding:25px;
+      border-radius:16px;
+      border-left:6px solid #1976d2;
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+      animation:fadeCard 1s ease forwards;
+      opacity:0;
+      transform:translateY(30px);
+      transition:.4s;
+    }
+    .card:nth-child(1){animation-delay:0.2s;}
+    .card:nth-child(2){animation-delay:0.4s;}
+    .card:nth-child(3){animation-delay:0.6s;}
+    @keyframes fadeCard{to{opacity:1;transform:translateY(0);}}
+
+    .card:hover{
+      transform:translateY(-8px) scale(1.03);
+      box-shadow:0 20px 35px rgba(0,0,0,0.25);
+    }
+    .card h3{
+      color:#0056b3;
+      margin-bottom:12px;
+      border-bottom:2px solid #ffeb3b;
+      display:inline-block;
+      padding-bottom:4px;
+      background:linear-gradient(90deg,#1976d2,#2196f3);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .card p{line-height:1.6;font-size:.95rem;}
+
+    /* Footer */
+    footer{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:20px;
+      text-align:center;
+      margin-top:auto;
+      animation:fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+    /* Language Switcher */
+    #languageSwitcher{
+      margin-left:15px;
+      padding:5px;
+      border-radius:5px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Shapes -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<!-- Header -->
+<header>
+  <div style="display:flex;align-items:center">
+    <img src="05714af9-01e9-4e65-bb06-2794fe19c3da.png" alt="Logo">
+    <h2 data-en="Complaint Portal - Buldhana" data-hi="शिकायत पोर्टल - बुलढाणा">Digital Buldhana</h2>
+  </div>
+  <nav>
+    <a href="index.html" data-en="Home" data-hi="होम">Home</a>
+   
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+    </select>
+  </nav>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-box">
+  <h3 data-en="Register Complaint Through Phone / Email / WhatsApp" 
+      data-hi="फोन / ईमेल / व्हाट्सएप से शिकायत पंजीकरण करें">
+      Register Complaint Through Phone / Email / WhatsApp
+  </h3>
+  <p data-en="Home / RegisterComplaint Through Phone / Email / WhatsApp" 
+     data-hi="होम / फोन / ईमेल / व्हाट्सएप से शिकायत पंजीकरण करें">
+     Home / Register Through Phone / Email / WhatsApp
+  </p>
+</div>
+
+<!-- Info Section -->
+<section class="section">
+  <div class="card">
+    <h3 data-en="📞 Register Complaint via Phone" data-hi="📞 फोन से शिकायत दर्ज करें">📞 Register Complaint via Phone</h3>
+    <p data-en="Dial our toll-free helpline 1800-570-1235 anytime to register your complaint. 
+    Our operators are available 24x7 and will verify your details to ensure quick resolution. 
+    Please keep your information handy for faster support." 
+    data-hi="हमारी टोल-फ्री हेल्पलाइन 1800-570-1235 पर कॉल करें और अपनी शिकायत दर्ज करें। 
+    हमारे ऑपरेटर 24x7 उपलब्ध हैं और आपकी जानकारी की पुष्टि कर तुरंत समाधान सुनिश्चित करेंगे। 
+    कृपया तेज़ समर्थन के लिए अपनी जानकारी तैयार रखें।">
+    Dial our toll-free helpline 1800-570-1235 anytime to register your complaint. 
+    Our operators are available 24x7 and will verify your details to ensure quick resolution. 
+    Please keep your information handy for faster support.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3 data-en="✉ Register Complaint via Email" data-hi="✉ ईमेल से शिकायत दर्ज करें">✉ Register Complaint via Email</h3>
+    <p data-en="Send us a mail at support@complaintportal.gov with your Name, Contact No., and Complaint Details. 
+    Our team will validate the information and register your complaint in the system. 
+    In case of incomplete details, one of our officials will reach out to you directly." 
+    data-hi="हमें support@complaintportal.gov पर अपना नाम, संपर्क नंबर और शिकायत विवरण मेल करें। 
+    हमारी टीम जानकारी की पुष्टि कर आपकी शिकायत को सिस्टम में दर्ज करेगी। यदि जानकारी अधूरी है, तो हमारे अधिकारी सीधे आपसे संपर्क करेंगे।">
+    Send us a mail at support@complaintportal.gov with your Name, Contact No., and Complaint Details. 
+    Our team will validate the information and register your complaint in the system. 
+    In case of incomplete details, one of our officials will reach out to you directly.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3 data-en="💬 Register Complaint via WhatsApp" data-hi="💬 व्हाट्सएप से शिकायत दर्ज करें">💬 Register Complaint via WhatsApp</h3>
+    <p data-en='Message "Hi" on WhatsApp to +91 8141231235 and choose Register Complaint from the menu. 
+    Our chatbot will guide you step-by-step through the process and confirm once your complaint is registered in the system.' 
+    data-hi='व्हाट्सएप पर "Hi" संदेश भेजें +91 8141231235 पर और मेनू से शिकायत दर्ज करें चुनें। 
+    हमारा चैटबॉट आपको चरण-दर-चरण मार्गदर्शन करेगा और आपकी शिकायत सिस्टम में दर्ज होने पर पुष्टि करेगा।'>
+    Message "Hi" on WhatsApp to +91 8141231235 and choose Register Complaint from the menu. 
+    Our chatbot will guide you step-by-step through the process and confirm once your complaint is registered in the system.
+    </p>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+  © <span id="year"></span> <span data-en="Digital Buldhana. All Rights Reserved." 
+  data-hi=" डिजिटल बुलढाणा। सर्वाधिकार सुरक्षित।">
+ Digital Buldhana. All Rights Reserved.</span>
+</footer>
+
+<script>
+  document.getElementById("year").textContent=new Date().getFullYear();
+
+  const switcher = document.getElementById("languageSwitcher");
+  const savedLang = localStorage.getItem("language") || "en";
+  switcher.value = savedLang;
+  applyLanguage(savedLang);
+
+  switcher.addEventListener("change", () => {
+    const lang = switcher.value;
+    localStorage.setItem("language", lang);
+    applyLanguage(lang);
+  });
+
+  function applyLanguage(lang) {
+    document.querySelectorAll("[data-en]").forEach(el => {
+      if ((el.tagName === "INPUT" || el.tagName === "TEXTAREA") && el.hasAttribute("placeholder")) {
+        el.placeholder = el.getAttribute(`data-${lang}`);
+      } else {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      }
+    });
+  }
+</script>
+</body>
+</html>

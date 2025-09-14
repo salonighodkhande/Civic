@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Access - Complaint Portal</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif}
+    body{
+      background:linear-gradient(135deg,#e6f0ff,#f4f6f9);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Floating Shapes */
+    .shape{
+      position:absolute;
+      border-radius:50%;
+      opacity:0.15;
+      z-index:-1;
+      animation:float 6s ease-in-out infinite alternate;
+    }
+    .shape1{width:220px;height:220px;background:#1976d2;top:-60px;left:-60px;}
+    .shape2{width:180px;height:180px;background:#2196f3;bottom:80px;right:-60px;animation-delay:2s;}
+    .shape3{width:140px;height:140px;background:#ffd700;top:200px;right:60px;animation-delay:4s;}
+    @keyframes float{
+      0%{transform:translateY(0);}
+      100%{transform:translateY(20px);}
+    }
+
+    header{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:12px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+      animation:fadeInDown 1s ease forwards;
+    }
+    @keyframes fadeInDown{
+      from{opacity:0;transform:translateY(-20px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    .logo-container{display:flex;align-items:center;gap:12px}
+    .site-logo{height:55px;width:55px;border-radius:50%;background:#fff;padding:6px;box-shadow:0 3px 8px rgba(0,0,0,0.3);border:2px solid #ffeb3b}
+    .site-title{font-size:1.5rem;color:#fff;border-bottom:2px solid #fff;padding-bottom:4px}
+    .header-info{display:flex;align-items:center;gap:20px;font-size:.9rem}
+
+    main{flex:1;display:flex;justify-content:center;align-items:center;padding:40px 20px}
+    .auth-wrapper{
+      background:rgba(255,255,255,0.98);
+      border-radius:14px;
+      box-shadow:0 8px 22px rgba(0,0,0,0.25);
+      overflow:hidden;
+      width:100%;max-width:460px;
+      position:relative;
+      transform:translateY(30px);
+      opacity:0;
+      animation:fadeUp 1.2s ease forwards;
+    }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(30px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    .auth-wrapper:hover{
+      transform:translateY(-5px);
+      box-shadow:0 15px 30px rgba(0,0,0,0.3);
+      transition:all .4s ease;
+    }
+
+    .forms-container{
+      display:flex;
+      width:200%;
+      transition:transform .6s ease-in-out;
+    }
+    .form-box{
+      width:50%;
+      padding:40px 30px;
+      text-align:center;
+      animation:fadeIn 1s ease;
+    }
+    .form-box h2{
+      margin-bottom:15px;
+      color:#0056b3;
+      border-bottom:3px solid #ffeb3b;
+      display:inline-block;
+      padding-bottom:6px;
+    }
+    form{display:grid;gap:15px;margin-top:15px;text-align:left}
+    label{font-weight:600;margin-bottom:4px}
+    input{
+      width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;
+      font-size:.95rem;background:#fdfdfd;transition:.3s;
+    }
+    input:focus{border-color:#1976d2;box-shadow:0 0 8px rgba(33,150,243,0.5);outline:none;background:#fff}
+    .captcha-box{
+      display:flex;align-items:center;justify-content:space-between;
+      background:#f1f1f1;border-radius:6px;padding:10px 12px;font-weight:600;
+    }
+    button{
+      background:linear-gradient(90deg,#1976d2,#2196f3);
+      color:#fff;padding:13px;border:none;border-radius:6px;cursor:pointer;
+      font-weight:600;transition:.3s;
+    }
+    button:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 6px 14px rgba(0,0,0,0.25);
+      background:linear-gradient(90deg,#ffeb3b,#ffd600);
+      color:#0056b3;
+    }
+    .switch-link{margin-top:18px;font-size:.9rem;text-align:center;animation:fadeIn 1s ease}
+    .switch-link a{color:#1976d2;font-weight:600;text-decoration:none}
+    .switch-link a:hover{text-decoration:underline}
+    footer{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;padding:16px;text-align:center;font-size:.9rem;
+      animation:fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    .restricted{
+      background:#ffeb3b;color:#000;padding:8px;border-radius:6px;
+      font-size:.85rem;font-weight:600;margin-bottom:10px;
+      box-shadow:0 3px 6px rgba(0,0,0,0.2);
+      animation:shake 1s ease;
+    }
+    @keyframes shake{
+      0%,100%{transform:translateX(0);}
+      20%,60%{transform:translateX(-5px);}
+      40%,80%{transform:translateX(5px);}
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0;}
+      to{opacity:1;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Shapes -->
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+  <div class="shape shape3"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="05714af9-01e9-4e65-bb06-2794fe19c3da.png" alt="Portal Logo" class="site-logo">
+      <h2 class="site-title">Complaint Portal</h2>
+    </div>
+    <div class="header-info">
+      <div>📍 New Delhi, India</div>
+      <div>📞 +91-9876543210</div>
+      <div>✉ info@complaintportal.gov</div>
+    </div>
+  </header>
+
+  <!-- Auth Section -->
+  <main>
+    <div class="auth-wrapper">
+      <div class="forms-container" id="forms">
+        <!-- Login Form -->
+        <div class="form-box login">
+          <div class="restricted">⚠️ Official Use Only. Unauthorized access is prohibited.</div>
+          <h2>Login</h2>
+          <form>
+            <div>
+              <label for="login-email">Official Email</label>
+              <input type="email" id="login-email" placeholder="Enter official email" required>
+            </div>
+            <div>
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" placeholder="Enter password" required>
+            </div>
+            <div class="captcha-box">
+              <span id="captcha-text"></span>
+              <input type="text" id="captcha-input" placeholder="Enter captcha" required>
+            </div>
+            <button type="submit">Sign In</button>
+          </form>
+          <div class="switch-link">
+            <p>Don’t have an account? <a href="#" id="toSignup">Sign Up</a></p>
+          </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-box signup">
+          <div class="restricted">⚠️ Official Use Only. Unauthorized access is prohibited.</div>
+          <h2>Sign Up</h2>
+          <form>
+            <div>
+              <label for="signup-name">Full Name</label>
+              <input type="text" id="signup-name" placeholder="Enter your full name" required>
+            </div>
+            <div>
+              <label for="signup-email">Official Email</label>
+              <input type="email" id="signup-email" placeholder="Enter official email" required>
+            </div>
+            <div>
+              <label for="signup-password">Password</label>
+              <input type="password" id="signup-password" placeholder="Create password" required>
+            </div>
+            <div class="captcha-box">
+              <span id="captcha-text-signup"></span>
+              <input type="text" id="captcha-input-signup" placeholder="Enter captcha" required>
+            </div>
+            <button type="submit">Request Access</button>
+          </form>
+          <div class="switch-link">
+            <p>Already have an account? <a href="#" id="toLogin">Login</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Complaint Registration Portal - Official Use Only.
+  </footer>
+
+<script>
+  // Captcha generator
+  function generateCaptcha(id){
+    let chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    let captcha="";
+    for(let i=0;i<5;i++) captcha+=chars.charAt(Math.floor(Math.random()*chars.length));
+    document.getElementById(id).textContent=captcha;
+  }
+  generateCaptcha("captcha-text");
+  generateCaptcha("captcha-text-signup");
+
+  // Switch between forms
+  const forms=document.getElementById("forms");
+  document.getElementById("toSignup").addEventListener("click",e=>{
+    e.preventDefault();forms.style.transform="translateX(-50%)";
+  });
+  document.getElementById("toLogin").addEventListener("click",e=>{
+    e.preventDefault();forms.style.transform="translateX(0%)";
+  });
+
+  // Year auto update
+  document.getElementById("year").textContent=new Date().getFullYear();
+  function applyLanguage(lang) {
+  document.querySelectorAll("[data-en]").forEach(el => {
+    if ((el.tagName === "INPUT" || el.tagName === "TEXTAREA") && el.hasAttribute("placeholder")) {
+      // Update placeholder text
+      el.placeholder = el.getAttribute(`data-${lang}`);
+    } else {
+      // Update normal text
+      el.textContent = el.getAttribute(`data-${lang}`);
+    }
+  });
+}
+
+// Run on load
+const currentLang = localStorage.getItem("language") || "en";
+applyLanguage(currentLang);
+
+</script>
+</body>
+</html>

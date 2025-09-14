@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Complaint Registration Portal</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif;scroll-behavior:smooth}
+    body{
+      background:linear-gradient(135deg,#e6f0ff,#f4f6f9);
+      color:#333;line-height:1.6;
+    }
+
+
+
+    /* Header */
+    header{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:12px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    header img{height:55px;margin-right:10px}
+    .header-info{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .header-info div{font-size:.9rem}
+
+    nav{
+      background:linear-gradient(90deg,#ffffff,#ffffff);
+      padding:14px;
+      text-align:center;
+      position:sticky;top:0;z-index:1000;
+      box-shadow:0 2px 8px rgba(0,0,0,0.15);
+    }
+    nav a{
+      color:#03045e;
+      margin:0 15px;
+      font-weight:600;
+      letter-spacing:0.5px;
+      transition:all .3s;
+    }
+    nav a:hover{color:#fff;text-shadow:0 0 8px #03045e}
+
+    /* Hero */
+    .hero{
+      background:url("https://static.vecteezy.com/system/resources/thumbnails/027/504/236/small_2x/public-sector-word-concepts-dark-blue-banner-services-and-enterprises-infographics-with-editable-icons-on-color-background-isolated-typography-illustration-with-text-vector.jpg") center/cover no-repeat;
+      color:#fff;
+      padding:120px 20px;
+      text-align:center;
+      animation:fadeIn 2s ease;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,86,179,0.6);
+    }
+    .hero h1{font-size:3rem;margin-bottom:10px;text-shadow:0 3px 7px #000;position:relative;z-index:1;color:#ffeb3b}
+    .hero p{font-size:1.3rem;text-shadow:0 2px 6px #000;position:relative;z-index:1;color:#fff}
+
+    /* Sections */
+    .section{
+      max-width:1100px;
+      margin:60px auto;
+      padding:30px;
+      background:rgba(255,255,255,0.95);
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.15);
+      backdrop-filter:blur(10px);
+      opacity:0;
+      transform:translateY(40px);
+      transition:all .8s ease;
+    }
+    .section.visible{opacity:1;transform:translateY(0)}
+    .section h2{
+      color:#0056b3;
+      margin-bottom:18px;
+      border-bottom:2px solid #ffeb3b;
+      padding-bottom:6px;
+    }
+
+    /* Forms */
+    form{display:grid;gap:15px}
+    label{font-weight:600;display:block;margin-bottom:4px}
+    input,select,textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      font-size:.95rem;
+      transition:all .3s;
+      background:#fdfdfd;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:#1976d2;
+      box-shadow:0 0 8px rgba(33,150,243,0.5);
+      outline:none;
+      background:#fff;
+    }
+    textarea{resize:vertical;min-height:90px}
+
+    button{
+      background:linear-gradient(90deg,#1976d2,#2196f3);
+      color:#fff;
+      padding:13px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:600;
+      letter-spacing:0.5px;
+      transition:transform .2s,box-shadow .3s,background .3s;
+    }
+    button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 14px rgba(0,0,0,0.25);
+      background:linear-gradient(90deg,#ffeb3b,#ffd600);
+      color:#0056b3;
+    }
+
+    iframe{
+      width:100%;
+      height:420px;
+      border:0;
+      border-radius:10px;
+      filter:grayscale(20%) contrast(1.1);
+      transition:filter .3s;
+    }
+    iframe:hover{filter:grayscale(0) contrast(1.2)}
+
+    footer{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:25px;
+      margin-top:60px;
+      text-align:center;
+      box-shadow:0 -3px 10px rgba(0,0,0,0.2);
+    }
+    footer p{margin:6px 0}
+
+    /* Animations */
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(-40px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* Background Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom right, rgba(33,150,243,0.4), rgba(255,235,59,0.3));
+      z-index: -1;
+    }
+
+  </style>
+</head>
+
+
+<body>
+  <!-- Header -->
+<header>
+  <div style="display:flex;align-items:center">
+    <img src="05714af9-01e9-4e65-bb06-2794fe19c3da.png" alt="Logo">
+    <h2>Complaint Portal</h2>
+  </div>
+  <div class="header-info">
+    <div>📍 New Delhi, India</div>
+    <div>📞 +91-9876543210</div>
+    <div>✉ info@complaintportal.gov</div>
+  </div>
+</header>
+
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#register">Register Complaint</a>
+    <a href="#details">Complaint Details</a>
+    <a href="#upload">Upload Document</a>
+    <a href="#map">Live Map</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Welcome to Complaint Registration Portal</h1>
+    <p>File, track and resolve complaints anywhere with ease</p>
+  </div>
+
+  <!-- Complaint Registration -->
+  <section id="register" class="section">
+    <h2>Online Complaint Registration</h2>
+    <form id="complaintForm">
+      <div>
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email">
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone">
+      </div>
+      <div>
+        <label for="type">Complaint Type *</label>
+        <select id="type" required>
+          <option value="">-- Select --</option>
+          <option>Water Supply</option>
+          <option>Electricity</option>
+          <option>Roads</option>
+          <option>Sanitation</option>
+          <option>Public Health</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="subject">Subject *</label>
+        <input type="text" id="subject" required>
+      </div>
+      <div>
+        <label for="description">Description *</label>
+        <textarea id="description" required></textarea>
+      </div>
+      <button type="submit">Submit Complaint</button>
+      <div id="formMsg" style="margin-top:10px;font-weight:600;"></div>
+    </form>
+  </section>
+
+  <!-- Complaint Details -->
+  <section id="details" class="section">
+    <h2>Complaint Details</h2>
+    <p>Every complaint gets a <b>unique Complaint ID</b>. Track status online (Registered, In Progress, Resolved) with this ID anytime.</p>
+  </section>
+
+  <!-- Upload Document -->
+  <section id="upload" class="section">
+    <h2>Upload Document / Image</h2>
+    <form>
+      <div>
+        <label for="doc">Choose File</label>
+        <input type="file" id="doc" accept=".jpg,.jpeg,.png,.pdf">
+      </div>
+      <button type="button" onclick="alert('File uploaded successfully!')">Upload</button>
+    </form>
+  </section>
+
+<!-- Live Map -->
+<section id="map" class="section">
+  <h2>Your Live Location</h2>
+  <div id="locationStatus" style="margin:12px 0;font-weight:600;"></div>
+  <iframe id="liveMap"></iframe>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>📍 New Delhi, India | 📞 +91-9876543210 | ✉ info@complaintportal.gov</p>
+    <p>© <span id="year"></span> Complaint Registration Portal. All Rights Reserved.</p>
+  </footer>
+
+<script>
+  const form=document.getElementById("complaintForm");
+  const msg=document.getElementById("formMsg");
+  document.getElementById("year").textContent=new Date().getFullYear();
+
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    const id="C"+Math.random().toString(36).substr(2,6).toUpperCase();
+    msg.style.color="green";
+    msg.innerHTML=`✔ Complaint submitted successfully.<br>Your Complaint ID: <b>${id}</b>`;
+    form.reset();
+  });
+
+  // Reveal sections on scroll
+  const sections=document.querySelectorAll(".section");
+  const reveal=()=>{sections.forEach(sec=>{
+    const top=sec.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){sec.classList.add("visible")}}
+  )};
+  window.addEventListener("scroll",reveal);
+  window.addEventListener("load",reveal);
+
+  // Auto-detect user location on load
+  window.addEventListener("load", ()=>{
+    const status=document.getElementById("locationStatus");
+    const map=document.getElementById("liveMap");
+
+    if(navigator.geolocation){
+      status.textContent="Detecting your location...";
+      navigator.geolocation.getCurrentPosition(pos=>{
+        const lat=pos.coords.latitude;
+        const lon=pos.coords.longitude;
+        status.textContent=`Latitude: ${lat.toFixed(4)}, Longitude: ${lon.toFixed(4)}`;
+        map.src=`https://www.google.com/maps?q=${lat},${lon}&z=15&output=embed`;
+      },()=>{
+        status.style.color="red";
+        status.textContent="Unable to fetch location. Please allow GPS access.";
+      });
+    }else{
+      status.textContent="Geolocation not supported in this browser.";
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title data-en="Complaint Re-Open - Complaint Portal" data-hi="शिकायत पुनः खोलें - शिकायत पोर्टल">Complaint Re-Open - Complaint Portal</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif;}
+  body{
+    background:linear-gradient(135deg,#e0eaff,#f5f9ff);
+    color:#333;
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+  }
+  .shape{position:absolute;border-radius:50%;opacity:0.15;z-index:-1;animation:float 6s ease-in-out infinite alternate;}
+  .shape1{width:250px;height:250px;background:#1976d2;top:-50px;left:-50px;}
+  .shape2{width:200px;height:200px;background:#2196f3;bottom:50px;right:-60px;animation-delay:2s;}
+  .shape3{width:150px;height:150px;background:#ffd700;top:200px;right:50px;animation-delay:4s;}
+  @keyframes float{0%{transform:translateY(0);}100%{transform:translateY(20px);}}
+
+  header{
+    background:linear-gradient(90deg,#0056b3,#1976d2);
+    color:#fff;padding:15px 25px;display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;box-shadow:0 4px 15px rgba(0,0,0,0.3);position:relative;z-index:1;
+  }
+  header img{height:55px;margin-right:10px;}
+  nav a{color:#fff;margin:0 15px;font-weight:600;text-decoration:none;transition:all .3s;}
+  nav a:hover{color:#ffd700;}
+  #languageSwitcher{margin-left:15px;padding:5px;border-radius:6px;}
+
+  .section{
+    max-width:700px;margin:60px auto;padding:40px;border-radius:20px;
+    backdrop-filter:blur(15px);background:rgba(255,255,255,0.85);
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);position:relative;z-index:1;
+    animation:fadeIn 1s ease forwards;opacity:0;
+  }
+  .heading-card{
+    border:4px solid;border-image-slice:1;border-width:4px;
+    border-image-source: linear-gradient(90deg,#1976d2,#2196f3,#ffd700);
+    border-radius:20px;padding:25px 20px 15px 20px;text-align:center;margin-bottom:40px;
+    background:rgba(255,255,255,0.9);box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transition:transform 0.3s, box-shadow 0.3s;
+  }
+  .heading-card:hover{transform:translateY(-5px);box-shadow:0 20px 35px rgba(0,0,0,0.25);}
+  .heading-card h2{color:#0056b3;font-size:2rem;margin-bottom:10px;}
+  .breadcrumb{font-size:0.9rem;color:#555;}
+  .breadcrumb a{color:#1976d2;text-decoration:none;}
+  .breadcrumb a:hover{text-decoration:underline;}
+
+  form{display:grid;gap:25px;}
+  label{font-weight:600;color:#03045e;}
+  input[type=text]{width:100%;padding:14px;border-radius:12px;border:1px solid #ccc;font-size:1rem;
+    transition:all .3s;background:rgba(255,255,255,0.8);}
+  input[type=text]:focus{border-color:#1976d2;box-shadow:0 0 18px rgba(33,150,243,0.5);outline:none;background:#fff;}
+
+  button{
+    background:linear-gradient(90deg,#1976d2,#2196f3);color:#fff;padding:15px;border:none;border-radius:12px;
+    cursor:pointer;font-weight:600;letter-spacing:0.5px;transition:all .3s;font-size:1rem;
+  }
+  button:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    background:linear-gradient(90deg,#ffd700,#ffeb3b);color:#0056b3;}
+
+  .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.5);align-items:center;justify-content:center;z-index:1000;}
+  .modal-content{background:#fff;padding:30px 40px;border-radius:16px;text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,0.25);max-width:400px;animation:popIn .5s ease forwards;}
+  @keyframes popIn{from{transform:scale(0.7);opacity:0}to{transform:scale(1);opacity:1}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+  footer{background:linear-gradient(90deg,#0056b3,#1976d2);color:#fff;padding:25px;margin-top:60px;
+    text-align:center;box-shadow:0 -3px 10px rgba(0,0,0,0.2);}
+  footer p{margin:6px 0;}
+</style>
+</head>
+<body>
+
+<!-- Floating shapes -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<header>
+  <div style="display:flex;align-items:center">
+    <img src="05714af9-01e9-4e65-bb06-2794fe19c3da.png" alt="Logo">
+    <h2 data-en="Complaint Portal" data-hi="शिकायत पोर्टल">Digitakl Buldhana</h2>
+  </div>
+  <nav>
+    <a href="/final-web/index.html" data-en="Home" data-hi="होम">Home</a>
+    
+  </nav>
+  <select id="languageSwitcher">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+  </select>
+</header>
+
+<section class="section">
+  <div class="heading-card">
+    <h2 data-en="Complaint Re-Open" data-hi="शिकायत पुनः खोलें">Complaint Re-Open</h2>
+    <div class="breadcrumb">
+      <a href="/final-web/index.html" data-en="Home" data-hi="होम">Home</a> / 
+      <span data-en="Complaint Re-Open" data-hi="शिकायत पुनः खोलें">Complaint Re-Open</span>
+    </div>
+  </div>
+
+  <form id="reopenForm">
+    <div>
+      <label for="complaintNo" data-en="Complaint No.:" data-hi="शिकायत संख्या:">Complaint No.:</label>
+      <input type="text" id="complaintNo" data-en="Enter Complaint Number" data-hi="शिकायत संख्या दर्ज करें" placeholder="Enter Complaint Number" required>
+    </div>
+    <div>
+      <label for="tokenNo" data-en="Token No.:" data-hi="टोकन संख्या:">Token No.:</label>
+      <input type="text" id="tokenNo" data-en="Enter Token Number" data-hi="टोकन संख्या दर्ज करें" placeholder="Enter Token Number" required>
+    </div>
+    <button type="submit" data-en="Re-Open Complaint" data-hi="शिकायत पुनः खोलें">Re-Open Complaint</button>
+  </form>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="thankYouModal">
+  <div class="modal-content">
+    <h3 data-en="Success!" data-hi="सफलता!">Success!</h3>
+    <p data-en="Your complaint has been re-opened successfully." data-hi="आपकी शिकायत सफलतापूर्वक पुनः खोली गई है।">Your complaint has been re-opened successfully.</p>
+    <button onclick="closeModal()" data-en="Close" data-hi="बंद करें">Close</button>
+  </div>
+</div>
+
+<footer>
+  <p data-en="📍 Buldhana, India | 📞 +91-9876543210 | ✉ info@complaintportal.gov"
+     data-hi="📍  बुलढाना, भारत | 📞 +91-9876543210 | ✉ info@complaintportal.gov">
+     📍Buldhana, India | 📞 +91-9876543210 | ✉ info@complaintportal.gov</p>
+  <p>© <span id="year"></span> 
+    <span data-en="Complaint Registration Portal. All Rights Reserved." data-hi="शिकायत पंजीकरण पोर्टल। सभी अधिकार सुरक्षित।">
+      Complaint Registration Portal. All Rights Reserved.
+    </span>
+  </p>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+const reopenForm = document.getElementById("reopenForm");
+const modal = document.getElementById("thankYouModal");
+
+reopenForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  const complaintNo = document.getElementById("complaintNo").value.trim();
+  const tokenNo = document.getElementById("tokenNo").value.trim();
+  if(!complaintNo || !tokenNo){
+    alert(currentLang === "hi" ? "कृपया शिकायत संख्या और टोकन संख्या दर्ज करें।" : "Please enter both Complaint No. and Token No.");
+    return;
+  }
+  modal.style.display="flex";
+  reopenForm.reset();
+});
+
+function closeModal(){modal.style.display="none";}
+window.addEventListener("load",()=>{document.querySelector(".section").style.opacity=1;});
+
+// Multilingual logic
+const switcher=document.getElementById("languageSwitcher");
+let currentLang=localStorage.getItem("language")||"en";
+switcher.value=currentLang;
+applyLanguage(currentLang);
+
+switcher.addEventListener("change",()=>{
+  currentLang=switcher.value;
+  localStorage.setItem("language",currentLang);
+  applyLanguage(currentLang);
+});
+
+function applyLanguage(lang){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    if(el.tagName==="INPUT" && el.placeholder){
+      el.placeholder=el.getAttribute(`data-${lang}`);
+    } else {
+      el.textContent=el.getAttribute(`data-${lang}`);
+    }
+  });
+}
+</script>
+</body>
+</html>
+

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="script.js" defer></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Complaint Registration Portal</title>
+  <style>*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif;scroll-behavior:smooth}
+    body{
+      background:linear-gradient(135deg,#e6f0ff,#f4f6f9);
+      color:#333;line-height:1.6;
+    }
+
+    /* Header */
+    header{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:12px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    header img{height:55px;margin-right:10px}
+    .header-info{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .header-info div{font-size:.9rem}
+
+    nav{
+      background:linear-gradient(90deg,#ffffff,#ffffff);
+      padding:14px;
+      text-align:center;
+      position:sticky;top:0;z-index:1000;
+      box-shadow:0 2px 8px rgba(0,0,0,0.15);
+    }
+    nav a{
+      color:#03045e;
+      margin:0 15px;
+      font-weight:600;
+      letter-spacing:0.5px;
+      transition:all .3s;
+      text-decoration:none;
+    }
+    nav a:hover{color:#fff;text-shadow:0 0 8px #03045e}
+
+    /* Hero */
+    .hero{
+      background:url("/final-web/istockphoto-1146418702-1024x1024.jpg") center/cover no-repeat;
+      color:#fff;
+      padding:120px 20px;
+      text-align:center;
+      animation:fadeIn 2s ease;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,86,179,0.6);
+    }
+    .hero h1{font-size:3rem;margin-bottom:10px;text-shadow:0 3px 7px #000;position:relative;z-index:1;color:#ffeb3b}
+    .hero p{font-size:1.3rem;text-shadow:0 2px 6px #000;position:relative;z-index:1;color:#fff}
+
+    /* Sections */
+    .section{
+      max-width:1100px;
+      margin:60px auto;
+      padding:30px;
+      background:rgba(255,255,255,0.95);
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.15);
+      backdrop-filter:blur(10px);
+      opacity:0;
+      transform:translateY(40px);
+      transition:all .8s ease;
+    }
+    .section.visible{opacity:1;transform:translateY(0)}
+    .section h2{
+      color:#0056b3;
+      margin-bottom:18px;
+      border-bottom:2px solid #ffeb3b;
+      padding-bottom:6px;
+    }
+
+    /* Forms */
+    form{display:grid;gap:15px}
+    label{font-weight:600;display:block;margin-bottom:4px}
+    input,select,textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      font-size:.95rem;
+      transition:all .3s;
+      background:#fdfdfd;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:#1976d2;
+      box-shadow:0 0 8px rgba(33,150,243,0.5);
+      outline:none;
+      background:#fff;
+    }
+    textarea{resize:vertical;min-height:90px}
+
+    button{
+      background:linear-gradient(90deg,#1976d2,#2196f3);
+      color:#fff;
+      padding:13px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:600;
+      letter-spacing:0.5px;
+      transition:transform .2s,box-shadow .3s,background .3s;
+    }
+    button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 14px rgba(0,0,0,0.25);
+      background:linear-gradient(90deg,#ffeb3b,#ffd600);
+      color:#0056b3;
+    }
+
+    iframe{
+      width:100%;
+      height:420px;
+      border:0;
+      border-radius:10px;
+      filter:grayscale(20%) contrast(1.1);
+      transition:filter .3s;
+    }
+    iframe:hover{filter:grayscale(0) contrast(1.2)}
+
+    footer{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:25px;
+      margin-top:60px;
+      text-align:center;
+      box-shadow:0 -3px 10px rgba(0,0,0,0.2);
+    }
+    footer p{margin:6px 0}
+
+    /* Database Controls */
+    .db-controls{
+      margin:20px 0;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .db-controls button{
+      padding:10px 15px;
+      font-size:0.9rem;
+    }
+
+    /* Complaint List */
+    .complaint-item{
+      border:1px solid #ddd;
+      border-radius:8px;
+      padding:15px;
+      margin:10px 0;
+      background:#f9f9f9;
+    }
+    .complaint-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .complaint-id{
+      font-weight:bold;
+      color:#0056b3;
+    }
+    .status{
+      padding:5px 10px;
+      border-radius:4px;
+      font-size:0.8rem;
+      font-weight:bold;
+    }
+    .status.registered{background:#e3f2fd;color:#1976d2}
+    .status.progress{background:#fff3e0;color:#f57c00}
+    .status.resolved{background:#e8f5e8;color:#388e3c}
+
+    /* Search and Filter */
+    .search-section{
+      background:#f5f5f5;
+      padding:20px;
+      border-radius:8px;
+      margin:20px 0;
+    }
+    .search-controls{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr auto;
+      gap:10px;
+      align-items:end;
+    }
+
+    /* Animations */
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(-40px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* Background Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom right, rgba(33,150,243,0.4), rgba(255,235,59,0.3));
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .search-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
+</style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+      <h2 data-en="Digital Buldhana" data-hi="डिजिटल बुलढाणा">Digital Buldhana</h2>
+    </div>
+    <div class="header-info">
+     <div data-en="📍 Buldhana, India" data-hi="📍बुलढाणा, भारत">📍Buldhana, India</div>
+      <div data-en="📞 +91-9876543210" data-hi="📞 +91-9876543210">📞 +91-9876543210</div>
+      <div data-en="✉ info@complaintportal.gov" data-hi="✉ info@complaintportal.gov">✉ info@complaintportal.gov</div>
+    </div>
+    <div class="lang-switch">
+      <select id="languageSwitcher">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+   <a href="/final-web/index.html" data-en="Home" data-hi="होम">Home</a>
+    <a href="#register" data-en="Register Complaint" data-hi="शिकायत दर्ज करें">Register Complaint</a>
+    <a href="#track" data-en="Track Complaints" data-hi="शिकायत ट्रैक करें">Track Complaints</a>
+    <a href="#database" data-en="Database Manager" data-hi="डेटाबेस प्रबंधक">Database Manager</a>
+    <a href="#upload" data-en="Upload Document" data-hi="दस्तावेज़ अपलोड करें">Upload Document</a>
+    <a href="#map" data-en="Live Map" data-hi="लाइव मानचित्र">Live Map</a>
+  </nav>
+
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" id="home">
+    <h1 data-en="Welcome to Complaint Registration Portal" data-hi="शिकायत पंजीकरण पोर्टल में आपका स्वागत है">Welcome to Complaint Registration Portal</h1>
+    <p data-en="File, track and resolve complaints anywhere with ease" data-hi="कहीं से भी शिकायत दर्ज करें, ट्रैक करें और समाधान प्राप्त करें">File, track and resolve complaints anywhere with ease</p>
+  </div>
+
+  <!-- Complaint Registration -->
+  <section id="register" class="section">
+    <h2 data-en="Online Complaint Registration" data-hi="ऑनलाइन शिकायत पंजीकरण">Online Complaint Registration</h2>
+    <form id="complaintForm">
+      <div>
+      <label for="name" data-en="Full Name *" data-hi="पूरा नाम *">Full Name *</label>
+        <input type="text" id="name" required data-en="Enter your name" data-hi="अपना नाम दर्ज करें" placeholder="Enter your name">
+      </div>
+      <div>
+  <label for="email" data-en="Email" data-hi="ईमेल">Email</label>
+  <input type="email" id="email" data-en="Enter your email" data-hi="अपना ईमेल दर्ज करें" placeholder="Enter your email">
+</div>
+<div>
+  <label for="phone" data-en="Phone" data-hi="फ़ोन">Phone</label>
+  <input type="tel" id="phone" 
+         data-en="Enter your phone number" 
+         data-hi="अपना फ़ोन नंबर दर्ज करें" 
+         placeholder="Enter your phone number">
+</div>
+
+            <div>
+  <label for="type" data-en="Complaint Type *" data-hi="शिकायत प्रकार *">Complaint Type *</label>
+  <select id="type" required>
+    <option value="" data-en="-- Select --" data-hi="-- चयन करें --">-- Select --</option>
+    <option data-en="Water Supply" data-hi="पानी की आपूर्ति">Water Supply</option>
+    <option data-en="Electricity" data-hi="बिजली">Electricity</option>
+    <option data-en="Roads" data-hi="सड़कें">Roads</option>
+    <option data-en="Sanitation" data-hi="स्वच्छता">Sanitation</option>
+    <option data-en="Public Health" data-hi="जन स्वास्थ्य">Public Health</option>
+    <option data-en="Other" data-hi="अन्य">Other</option>
+  </select>
+</div>
+      <div>
+  <label for="subject" data-en="Subject *" data-hi="विषय *">Subject *</label>
+  <input type="text" id="subject" required 
+         placeholder="Enter subject" 
+         data-en="Enter subject" 
+         data-hi="विषय दर्ज करें">
+</div>
+      <div>
+  <label for="description" data-en="Description *" data-hi="विवरण *">Description *</label>
+  <input id="description" required 
+            placeholder="Describe your complaint" 
+            data-en="Describe your complaint" 
+            data-hi="अपनी शिकायत का विवरण दें"></input>
+</div>
+      <button type="submit" data-en="Submit Complaint" data-hi="शिकायत सबमिट करें">Submit Complaint</button>
+      <div id="formMsg" style="margin-top:10px;font-weight:600;"></div>
+    </form>
+  </section>
+
+  <!-- Track Complaints -->
+  <section id="track" class="section">
+  <h2 data-en="Track Your Complaints" data-hi="अपनी शिकायतें ट्रैक करें">Track Your Complaints</h2>
+  
+  <div class="search-section">
+    <div class="search-controls">
+      
+      <!-- Complaint ID -->
+      <div>
+        <label for="searchId" data-en="Search by Complaint ID" data-hi="शिकायत आईडी द्वारा खोजें">
+          Search by Complaint ID
+        </label>
+        <input type="text" id="searchId" 
+               data-en="Enter Complaint ID" 
+               data-hi="शिकायत आईडी दर्ज करें"
+               placeholder="Enter Complaint ID">
+      </div>
+
+      <!-- Filter by Type -->
+      <div>
+        <label for="filterType" data-en="Filter by Type" data-hi="प्रकार के अनुसार फ़िल्टर करें">
+          Filter by Type
+        </label>
+        <select id="filterType">
+          <option value="" data-en="All Types" data-hi="सभी प्रकार">All Types</option>
+          <option value="water" data-en="Water Supply" data-hi="पानी की आपूर्ति">Water Supply</option>
+          <option value="electricity" data-en="Electricity" data-hi="बिजली">Electricity</option>
+          <option value="roads" data-en="Roads" data-hi="सड़कें">Roads</option>
+          <option value="sanitation" data-en="Sanitation" data-hi="स्वच्छता">Sanitation</option>
+          <option value="health" data-en="Public Health" data-hi="जन स्वास्थ्य">Public Health</option>
+          <option value="other" data-en="Other" data-hi="अन्य">Other</option>
+        </select>
+      </div>
+
+      <!-- Filter by Status -->
+      <div>
+        <label for="filterStatus" data-en="Filter by Status" data-hi="स्थिति के अनुसार छाँटें">
+          Filter by Status
+        </label>
+        <select id="filterStatus">
+          <option value="" data-en="All Status" data-hi="सभी स्थिति">All Status</option>
+          <option value="registered" data-en="Registered" data-hi="पंजीकृत">Registered</option>
+          <option value="progress" data-en="In Progress" data-hi="प्रगति पर">In Progress</option>
+          <option value="resolved" data-en="Resolved" data-hi="सुलझाया गया">Resolved</option>
+        </select>
+      </div>
+
+      <!-- Search Button -->
+      <div>
+        <button type="button" onclick="filterComplaints()" 
+                data-en="Search" 
+                data-hi="खोजें">Search</button>
+      </div>
+    </div>
+  </div>
+
+ 
+</section>
+
+
+  <!-- Database Manager -->
+  <section id="database" class="section">
+ <section id="database" class="section">
+  <h2 data-en="Database Manager" data-hi="डेटाबेस प्रबंधक">Database Manager</h2>
+  <p data-en="Manage your local complaint database stored in browser memory."
+     data-hi="अपने ब्राउज़र मेमोरी में संग्रहीत स्थानीय शिकायत डेटाबेस का प्रबंधन करें।">
+     Manage your local complaint database stored in browser memory.
+  </p>
+
+  <div class="db-controls">
+    <button onclick="exportData()" 
+            data-en="📥 Export Data" 
+            data-hi="📥 डेटा निर्यात करें">📥 Export Data</button>
+
+    <button onclick="document.getElementById('importFile').click()" 
+            data-en="📤 Import Data" 
+            data-hi="📤 डेटा आयात करें">📤 Import Data</button>
+
+    <button onclick="clearAllData()" style="background:#f44336" 
+            data-en="🗑️ Clear All Data" 
+            data-hi="🗑️ सभी डेटा हटाएँ">🗑️ Clear All Data</button>
+
+    <button onclick="showStats()" 
+            data-en="📊 Show Statistics" 
+            data-hi="📊 सांख्यिकी दिखाएँ">📊 Show Statistics</button>
+  </div>
+
+  <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+  
+  <div id="statsContainer" style="margin-top:20px;" 
+       data-en="Statistics will appear here..." 
+       data-hi="सांख्यिकी यहाँ दिखाई देगी...">
+       Statistics will appear here...
+  </div>
+</section>
+
+    
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    
+    <div id="statsContainer" style="margin-top:20px;"></div>
+  </section>
+
+  <!-- Upload Document -->
+ <section id="upload" class="section">
+ <section id="upload" class="section">
+  <h2 data-en="Upload Document / Image" data-hi="दस्तावेज़ / छवि अपलोड करें">
+    Upload Document / Image
+  </h2>
+  <form>
+    <div>
+      <label for="doc" data-en="Choose File" data-hi="फ़ाइल चुनें">Choose File</label>
+      <input type="file" id="doc" accept=".jpg,.jpeg,.png,.pdf">
+    </div>
+    <button type="button" 
+            onclick="alert(localStorage.getItem('language') === 'hi' ? 'फ़ाइल सफलतापूर्वक अपलोड हो गई!' : 'File uploaded successfully!')" 
+            data-en="Upload" 
+            data-hi="अपलोड करें">Upload</button>
+  </form>
+</section>
+
+  </section>
+
+  <!-- Live Map -->
+ <section id="map" class="section">
+  <h2 data-en="Your Live Location" data-hi="आपका लाइव स्थान">
+    Your Live Location
+  </h2>
+  <div id="locationStatus" 
+       style="margin:12px 0;font-weight:600;" 
+       data-en="Fetching your location..." 
+       data-hi="आपका स्थान प्राप्त किया जा रहा है...">
+  </div>
+  <iframe id="liveMap"></iframe>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p data-en="📍 Buldhana, india| 📞 +91-9876543210 | ✉ info@complaintportal.gov"
+   data-hi="📍 बुलढाणा, भारत | 📞 +91-9876543210 | ✉ info@complaintportal.gov">
+  📍 buldhana, India | 📞 +91-9876543210 | ✉ info@complaintportal.gov
+</p>
+
+<p data-en="© Complaint Registration Portal. All Rights Reserved."
+   data-hi="© शिकायत पंजीकरण पोर्टल। सर्वाधिकार सुरक्षित।">
+  © <span id="year"></span> Complaint Registration Portal. All Rights Reserved.
+</p>
+
+  </footer>
+<script>    // Database Class for Local Storage Management
+    class ComplaintDB {
+      constructor() {
+        this.dbKey = 'complaintDB';
+        this.init();
+      }
+
+      init() {
+        const existing = this.getAllComplaints();
+      }
+
+      saveToStorage(data) {
+        const jsonData = JSON.stringify(data, null, 2);
+        localStorage.setItem(this.dbKey, jsonData);
+      }
+
+      getAllComplaints() {
+        try {
+          const data = localStorage.getItem(this.dbKey);
+          return data ? JSON.parse(data) : [];
+        } catch (e) {
+          console.error('Error reading database:', e);
+          return [];
+        }
+      }
+
+      addComplaint(complaint) {
+        const complaints = this.getAllComplaints();
+        complaint.id = this.generateId();
+        complaint.status = 'registered';
+        complaint.dateCreated = new Date().toISOString();
+        complaint.dateUpdated = new Date().toISOString();
+        
+        complaints.push(complaint);
+        this.saveToStorage(complaints);
+        return complaint.id;
+      }
+
+      getComplaintById(id) {
+        const complaints = this.getAllComplaints();
+        return complaints.find(c => c.id === id);
+      }
+
+      updateComplaintStatus(id, status) {
+        const complaints = this.getAllComplaints();
+        const complaint = complaints.find(c => c.id === id);
+        if (complaint) {
+          complaint.status = status;
+          complaint.dateUpdated = new Date().toISOString();
+          this.saveToStorage(complaints);
+          return true;
+        }
+        return false;
+      }
+
+      deleteComplaint(id) {
+        let complaints = this.getAllComplaints();
+        complaints = complaints.filter(c => c.id !== id);
+        this.saveToStorage(complaints);
+      }
+
+      generateId() {
+        return "C" + Math.random().toString(36).substr(2, 6).toUpperCase();
+      }
+
+      exportData() {
+        return JSON.stringify(this.getAllComplaints(), null, 2);
+      }
+
+      importData(jsonData) {
+        try {
+          const data = JSON.parse(jsonData);
+          if (Array.isArray(data)) {
+            this.saveToStorage(data);
+            return true;
+          }
+        } catch (e) {
+          console.error('Invalid JSON data:', e);
+        }
+        return false;
+      }
+
+      clearAll() {
+        this.saveToStorage([]);
+      }
+
+      getStats() {
+        const complaints = this.getAllComplaints();
+        const stats = {
+          total: complaints.length,
+          registered: complaints.filter(c => c.status === 'registered').length,
+          inProgress: complaints.filter(c => c.status === 'progress').length,
+          resolved: complaints.filter(c => c.status === 'resolved').length,
+          byType: {}
+        };
+
+        complaints.forEach(c => {
+          stats.byType[c.type] = (stats.byType[c.type] || 0) + 1;
+        });
+
+        return stats;
+      }
+    }
+
+    // Initialize Database
+    const db = new ComplaintDB();
+    
+    // Form handling
+    const form = document.getElementById("complaintForm");
+    const msg = document.getElementById("formMsg");
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      
+      const complaint = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        type: document.getElementById("type").value,
+        subject: document.getElementById("subject").value,
+        description: document.getElementById("description").value
+      };
+
+      const id = db.addComplaint(complaint);
+      
+      msg.style.color = "green";
+      msg.innerHTML = `✔ Complaint submitted successfully.<br>Your Complaint ID: <b>${id}</b>`;
+      form.reset();
+      
+      // Refresh complaints display if visible
+      displayComplaints();
+    });
+
+    // Display complaints
+    function displayComplaints() {
+      const container = document.getElementById("complaintsContainer");
+      const complaints = db.getAllComplaints();
+      
+      if (complaints.length === 0) {
+        container.innerHTML = "<p>No complaints found. Register your first complaint above!</p>";
+        return;
+      }
+
+      let html = complaints.map(complaint => `
+        <div class="complaint-item">
+          <div class="complaint-header">
+            <span class="complaint-id">${complaint.id}</span>
+            <span class="status ${complaint.status}">${complaint.status.toUpperCase()}</span>
+          </div>
+          <h4>${complaint.subject}</h4>
+          <p><strong>Type:</strong> ${complaint.type}</p>
+          <p><strong>Name:</strong> ${complaint.name}</p>
+          <p><strong>Description:</strong> ${complaint.description}</p>
+          <p><strong>Date:</strong> ${new Date(complaint.dateCreated).toLocaleDateString()}</p>
+          <div style="margin-top:10px;">
+            <button onclick="updateStatus('${complaint.id}', 'progress')" 
+                    ${complaint.status === 'progress' ? 'disabled' : ''}>Mark In Progress</button>
+            <button onclick="updateStatus('${complaint.id}', 'resolved')" 
+                    ${complaint.status === 'resolved' ? 'disabled' : ''}>Mark Resolved</button>
+            <button onclick="deleteComplaint('${complaint.id}')" 
+                    style="background:#f44336">Delete</button>
+          </div>
+        </div>
+      `).join("");
+
+      container.innerHTML = html;
+    }
+
+    // Filter complaints
+    function filterComplaints() {
+      const searchId = document.getElementById("searchId").value.toLowerCase();
+      const filterType = document.getElementById("filterType").value;
+      const filterStatus = document.getElementById("filterStatus").value;
+      
+      let complaints = db.getAllComplaints();
+      
+      if (searchId) {
+        complaints = complaints.filter(c => c.id.toLowerCase().includes(searchId));
+      }
+      if (filterType) {
+        complaints = complaints.filter(c => c.type === filterType);
+      }
+      if (filterStatus) {
+        complaints = complaints.filter(c => c.status === filterStatus);
+      }
+      
+      const container = document.getElementById("complaintsContainer");
+      if (complaints.length === 0) {
+        container.innerHTML = "<p>No complaints match your search criteria.</p>";
+        return;
+      }
+
+      let html = complaints.map(complaint => `
+        <div class="complaint-item">
+          <div class="complaint-header">
+            <span class="complaint-id">${complaint.id}</span>
+            <span class="status ${complaint.status}">${complaint.status.toUpperCase()}</span>
+          </div>
+          <h4>${complaint.subject}</h4>
+          <p><strong>Type:</strong> ${complaint.type}</p>
+          <p><strong>Name:</strong> ${complaint.name}</p>
+          <p><strong>Description:</strong> ${complaint.description}</p>
+          <p><strong>Date:</strong> ${new Date(complaint.dateCreated).toLocaleDateString()}</p>
+          <div style="margin-top:10px;">
+            <button onclick="updateStatus('${complaint.id}', 'progress')" 
+                    ${complaint.status === 'progress' ? 'disabled' : ''}>Mark In Progress</button>
+            <button onclick="updateStatus('${complaint.id}', 'resolved')" 
+                    ${complaint.status === 'resolved' ? 'disabled' : ''}>Mark Resolved</button>
+            <button onclick="deleteComplaint('${complaint.id}')" 
+                    style="background:#f44336">Delete</button>
+          </div>
+        </div>
+      `).join("");
+
+      container.innerHTML = html;
+    }
+
+    // Update complaint status
+    function updateStatus(id, status) {
+      if (db.updateComplaintStatus(id, status)) {
+        displayComplaints();
+        alert(`Complaint ${id} status updated to: ${status}`);
+      }
+    }
+
+    // Delete complaint
+    function deleteComplaint(id) {
+      if (confirm(`Are you sure you want to delete complaint ${id}?`)) {
+        db.deleteComplaint(id);
+        displayComplaints();
+        alert(`Complaint ${id} deleted successfully.`);
+      }
+    }
+
+    // Database management functions
+    function exportData() {
+      const data = db.exportData();
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `complaint_data_${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      alert('Data exported successfully!');
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        if (db.importData(e.target.result)) {
+          alert('Data imported successfully!');
+          displayComplaints();
+        } else {
+          alert('Error importing data. Please check the file format.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function clearAllData() {
+      if (confirm('Are you sure you want to clear all complaint data? This action cannot be undone.')) {
+        db.clearAll();
+        displayComplaints();
+        alert('All data cleared successfully.');
+      }
+    }
+
+    function showStats() {
+      const stats = db.getStats();
+      const container = document.getElementById("statsContainer");
+      
+      let typeStats = Object.entries(stats.byType)
+        .map(([type, count]) => `<li>${type}: ${count}</li>`)
+        .join('');
+
+      container.innerHTML = `
+        <div style="background:#f0f8ff;padding:20px;border-radius:8px;border:1px solid #ddd;">
+          <h3>Database Statistics</h3>
+          <p><strong>Total Complaints:</strong> ${stats.total}</p>
+          <p><strong>Registered:</strong> ${stats.registered}</p>
+          <p><strong>In Progress:</strong> ${stats.inProgress}</p>
+          <p><strong>Resolved:</strong> ${stats.resolved}</p>
+          <h4>By Type:</h4>
+          <ul>${typeStats}</ul>
+        </div>
+      `;
+    }
+
+    // Reveal sections on scroll
+    const sections = document.querySelectorAll(".section");
+    const reveal = () => {
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.classList.add("visible");
+        }
+      });
+    };
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal);
+
+    // Auto-detect user location on load
+    window.addEventListener("load", () => {
+      const status = document.getElementById("locationStatus");
+      const map = document.getElementById("liveMap");
+
+      if (navigator.geolocation) {
+        status.textContent = "Detecting your location...";
+        navigator.geolocation.getCurrentPosition(pos => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          status.textContent = "Latitude: " + lat.toFixed(4) + ", Longitude: " + lon.toFixed(4);
+          map.src = "https://www.google.com/maps?q=" + lat + "," + lon + "&z=15&output=embed";
+        }, () => {
+          status.style.color = "red";
+          status.textContent = "Unable to fetch location. Please allow GPS access.";
+        });
+      } else {
+        status.textContent = "Geolocation not supported in this browser.";
+      }
+
+      // Initialize complaints display
+      displayComplaints();
+    });
+    
+      // Multilingual support
+    const langSwitcher = document.getElementById("languageSwitcher");
+
+function setLanguage(lang) {
+  localStorage.setItem("language", lang);
+
+  document.querySelectorAll("[data-en]").forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+
+    // If it's an input/textarea placeholder
+    if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+      if (el.hasAttribute("placeholder")) {
+        el.placeholder = text;
+      }
+    } 
+    // If it's an option inside a select
+    else if (el.tagName === "OPTION") {
+      el.textContent = text;
+    } 
+    // For all other elements (p, h2, button, label, etc.)
+    else {
+      el.textContent = text;
+    }
+  });
+}
+
+// Load saved language on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("language") || "en";
+  langSwitcher.value = savedLang;
+  setLanguage(savedLang);
+});
+
+// Change when user selects new language
+langSwitcher.addEventListener("change", (e) => {
+  setLanguage(e.target.value);
+});
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Citizen Feedback - Complaint Portal</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif;scroll-behavior:smooth;}
+  body{background:linear-gradient(135deg,#e0eaff,#f5f9ff);color:#333;line-height:1.6;overflow-x:hidden;position:relative;}
+
+  /* Floating background shapes */
+  .shape{position:absolute;border-radius:50%;opacity:0.15;z-index:-1;animation:float 6s ease-in-out infinite alternate;}
+  .shape1{width:250px;height:250px;background:#1976d2;top:-50px;left:-50px;}
+  .shape2{width:200px;height:200px;background:#2196f3;bottom:50px;right:-60px;animation-delay:2s;}
+  .shape3{width:150px;height:150px;background:#ffd700;top:200px;right:50px;animation-delay:4s;}
+  @keyframes float{0%{transform:translateY(0);}100%{transform:translateY(20px);}}
+
+  header{background:linear-gradient(90deg,#0056b3,#1976d2);color:#fff;padding:15px 25px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 4px 15px rgba(0,0,0,0.3);}
+  header img{height:55px;margin-right:10px;}
+  nav a{color:#fff;margin:0 15px;font-weight:600;text-decoration:none;transition:all .3s;}
+  nav a:hover{color:#ffd700;}
+
+  .section{max-width:900px;margin:60px auto;padding:40px;border-radius:20px;backdrop-filter:blur(15px);background:rgba(255,255,255,0.85);box-shadow:0 15px 35px rgba(0,0,0,0.2);animation:fadeIn 1s ease forwards;opacity:0;}
+  .heading-card{border:4px solid;border-image-slice:1;border-width:4px;border-image-source: linear-gradient(90deg,#1976d2,#2196f3,#ffd700);border-radius:20px;padding:25px 20px 15px 20px;text-align:center;margin-bottom:30px;background:rgba(255,255,255,0.9);box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+  .heading-card h2{color:#0056b3;font-size:2rem;margin-bottom:10px;}
+
+  .feedback-intro{margin-bottom:35px;font-size:1.15rem;line-height:1.7;text-align:center;color:#03045e;}
+  form{display:grid;gap:20px;}
+  label{font-weight:600;color:#03045e;}
+  textarea,input[type=text]{width:100%;padding:14px;border-radius:12px;border:1px solid #ccc;font-size:1rem;background:rgba(255,255,255,0.8);}
+  textarea:focus,input[type=text]:focus{border-color:#1976d2;box-shadow:0 0 18px rgba(33,150,243,0.5);outline:none;background:rgba(255,255,255,1);}
+
+  .radio-group{display:flex;gap:25px;align-items:center;font-weight:600;}
+  .radio-group label{cursor:pointer;}
+  button{background:linear-gradient(90deg,#1976d2,#2196f3);color:#fff;padding:15px;border:none;border-radius:12px;cursor:pointer;font-weight:600;letter-spacing:0.5px;font-size:1rem;transition:.3s;}
+  button:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,0.3);background:linear-gradient(90deg,#ffd700,#ffeb3b);color:#0056b3;}
+
+  .feedback-list{margin-top:45px;}
+  .feedback-item{background:linear-gradient(90deg,#e0f0ff,#ffffff);padding:18px 22px;border-radius:14px;margin-bottom:18px;box-shadow:0 5px 18px rgba(0,0,0,0.12);}
+  .feedback-item b{color:#1976d2;}
+
+  footer{background:linear-gradient(90deg,#0056b3,#1976d2);color:#fff;padding:25px;margin-top:60px;text-align:center;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+  .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;z-index:1000;}
+  .modal-content{background:#fff;padding:30px 40px;border-radius:16px;text-align:center;max-width:400px;animation:popIn .5s ease forwards;}
+  @keyframes popIn{from{transform:scale(0.7);opacity:0}to{transform:scale(1);opacity:1}}
+</style>
+</head>
+<body>
+<!-- Language Switcher -->
+<select id="languageSwitcher">
+  <option value="en">English</option>
+  <option value="hi">हिंदी</option>
+</select>
+
+<!-- Floating shapes -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<header>
+  <div style="display:flex;align-items:center">
+    <img src="05714af9-01e9-4e65-bb06-2794fe19c3da.png" alt="Logo">
+    <h2 data-en="Complaint Portal" data-hi="शिकायत पोर्टल">Digital Buldhana</h2>
+  </div>
+  <nav>
+    <a href="/final-web/index.html" data-en="Home" data-hi="मुखपृष्ठ">Home</a>
+    
+  </nav>
+</header>
+
+<section class="section">
+  <div class="heading-card">
+    <h2 data-en="Citizen Feedback" data-hi="नागरिक प्रतिक्रिया">Citizen Feedback</h2>
+  </div>
+  <p class="feedback-intro" 
+     data-en="We value your opinions! Your feedback allows us to improve our services, ensure transparency, and respond effectively to citizen needs. Please share your honest thoughts and suggestions." 
+     data-hi="हम आपके विचारों की कद्र करते हैं! आपकी प्रतिक्रिया हमें अपनी सेवाओं को बेहतर बनाने, पारदर्शिता सुनिश्चित करने और नागरिकों की आवश्यकताओं का प्रभावी ढंग से जवाब देने में मदद करती है। कृपया अपने सुझाव साझा करें।">
+     We value your opinions! Your feedback allows us to improve our services, ensure transparency, and respond effectively to citizen needs. Please share your honest thoughts and suggestions.
+  </p>
+
+  <form id="citizenFeedbackForm">
+    <div>
+      <label data-en="Are you satisfied with our services?" data-hi="क्या आप हमारी सेवाओं से संतुष्ट हैं?">Are you satisfied with our services?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="satisfaction" value="YES" required> <span data-en="YES" data-hi="हाँ">YES</span></label>
+        <label><input type="radio" name="satisfaction" value="NO"> <span data-en="NO" data-hi="नहीं">NO</span></label>
+        <label><input type="radio" name="satisfaction" value="CAN'T SAY"> <span data-en="CAN'T SAY" data-hi="कह नहीं सकते">CAN'T SAY</span></label>
+      </div>
+    </div>
+    <div>
+      <label for="reason" data-en="Your Feedback / Suggestions:" data-hi="आपकी प्रतिक्रिया / सुझाव:">Your Feedback / Suggestions:</label>
+      <textarea id="reason" placeholder="Type your feedback here..." required></textarea>
+    </div>
+    <button type="submit" data-en="Submit Feedback" data-hi="प्रतिक्रिया सबमिट करें">Submit Feedback</button>
+  </form>
+
+  <div class="feedback-list" id="feedbackList"></div>
+</section>
+
+<!-- Thank you modal -->
+<div class="modal" id="thankYouModal">
+  <div class="modal-content">
+    <h3 data-en="Thank You!" data-hi="धन्यवाद!">Thank You!</h3>
+    <p data-en="Your feedback has been successfully submitted." data-hi="आपकी प्रतिक्रिया सफलतापूर्वक सबमिट हो गई है।">Your feedback has been successfully submitted.</p>
+    <button onclick="closeModal()" data-en="Close" data-hi="बंद करें">Close</button>
+  </div>
+</div>
+
+<footer>
+  <p data-en="📍 Buldhana, India | 📞 +91-9876543210 | ✉ info@complaintportal.gov" data-hi="📍  बुलढाना, भारत | 📞 +91-9876543210 | ✉ info@complaintportal.gov">
+    📍 Buldhana, India | 📞 +91-9876543210 | ✉ info@complaintportal.gov
+  </p>
+  <p>© <span id="year"></span> <span data-en="Complaint Registration Portal. All Rights Reserved." data-hi="शिकायत पंजीकरण पोर्टल। सभी अधिकार सुरक्षित।">Complaint Registration Portal. All Rights Reserved.</span></p>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// Handle form
+const feedbackForm=document.getElementById("citizenFeedbackForm");
+const feedbackList=document.getElementById("feedbackList");
+const modal=document.getElementById("thankYouModal");
+feedbackForm.addEventListener("submit",function(e){
+  e.preventDefault();
+  const satisfaction=feedbackForm.elements["satisfaction"].value;
+  const reason=document.getElementById("reason").value.trim();
+  if(!reason){alert("Please provide your feedback.");return;}
+  const div=document.createElement("div");
+  div.className="feedback-item";
+  div.innerHTML=`<b>Satisfaction:</b> ${satisfaction}<br><b>Feedback:</b> ${reason}`;
+  feedbackList.prepend(div);
+  feedbackForm.reset();
+  modal.style.display="flex";
+});
+function closeModal(){modal.style.display="none";}
+window.addEventListener("load",()=>{document.querySelector(".section").style.opacity=1;});
+
+// Language switcher
+const switcher=document.getElementById("languageSwitcher");
+const savedLang=localStorage.getItem("language")||"en";
+switcher.value=savedLang;
+applyLanguage(savedLang);
+
+switcher.addEventListener("change",()=>{
+  const lang=switcher.value;
+  localStorage.setItem("language",lang);
+  applyLanguage(lang);
+});
+
+function applyLanguage(lang){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.textContent=el.getAttribute(`data-${lang}`);
+  });
+}
+</script>
+</body>
+</html>

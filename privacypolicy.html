@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use - Smart Ranchi</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif}
+    body{
+      background:linear-gradient(135deg,#e6f0ff,#f4f6f9);
+      color:#333;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      overflow-x:hidden;
+    }
+
+    /* Floating Background Shapes */
+    .shape{position:absolute;border-radius:50%;opacity:0.15;z-index:-1;animation:float 6s ease-in-out infinite alternate;}
+    .shape1{width:250px;height:250px;background:#1976d2;top:-60px;left:-60px;}
+    .shape2{width:200px;height:200px;background:#2196f3;bottom:50px;right:-70px;animation-delay:2s;}
+    .shape3{width:150px;height:150px;background:#ffd700;top:180px;right:70px;animation-delay:4s;}
+    @keyframes float{0%{transform:translateY(0);}100%{transform:translateY(20px);}}
+
+    /* Header */
+    header{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:15px 25px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      box-shadow:0 4px 12px rgba(0,0,0,0.25);
+      animation:fadeInDown 1s ease;
+    }
+    header img{height:55px;margin-right:10px;}
+    nav a{
+      color:#fff;margin:0 15px;font-weight:600;text-decoration:none;transition:.3s;
+    }
+    nav a:hover{color:#ffeb3b;}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+
+    /* Breadcrumb Box */
+    .breadcrumb-box{
+      margin:25px auto;
+      max-width:1000px;
+      border:3px solid transparent;
+      border-radius:14px;
+      padding:15px 200px;
+      font-weight:600;
+      background:#fff;
+      box-shadow:0 6px 16px rgba(0,0,0,0.15);
+      animation:fadeUp 1s ease;
+      border-image:linear-gradient(90deg,#1976d2,#2196f3,#ffd700) 1;
+    }
+    .breadcrumb-box h3{
+      font-size:1.8rem;
+      margin-bottom:8px;
+      color:#0056b3;
+      font-weight:700;
+      text-align:center;
+      letter-spacing:0.5px;
+    }
+    .breadcrumb-box p{
+      font-size:0.95rem;
+      text-align:center;
+      color:#333;
+    }
+    .breadcrumb-box span{color:#1976d2;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+    /* Main Section */
+    .section{
+      max-width:1000px;
+      margin:20px auto 50px;
+      padding:20px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:25px;
+    }
+    .card{
+      background:rgba(255,255,255,0.95);
+      padding:25px;
+      border-radius:16px;
+      border-left:6px solid #1976d2;
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+      animation:fadeCard 1s ease forwards;
+      opacity:0;
+      transform:translateY(30px);
+      transition:.4s;
+    }
+    .card:nth-child(1){animation-delay:0.2s;}
+    .card:nth-child(2){animation-delay:0.4s;}
+    .card:nth-child(3){animation-delay:0.6s;}
+    .card:nth-child(4){animation-delay:0.8s;}
+    .card:nth-child(5){animation-delay:1s;}
+    @keyframes fadeCard{to{opacity:1;transform:translateY(0);}}
+
+    .card:hover{
+      transform:translateY(-8px) scale(1.02);
+      box-shadow:0 20px 35px rgba(0,0,0,0.25);
+    }
+    .card h3{
+      color:#0056b3;
+      margin-bottom:12px;
+      border-bottom:2px solid #ffeb3b;
+      display:inline-block;
+      padding-bottom:4px;
+      background:linear-gradient(90deg,#1976d2,#2196f3);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .card p{line-height:1.6;font-size:.95rem;margin-bottom:12px;}
+
+    /* Footer */
+    footer{
+      background:linear-gradient(90deg,#0056b3,#1976d2);
+      color:#fff;
+      padding:20px;
+      text-align:center;
+      margin-top:auto;
+      animation:fadeInUp 1s ease;
+    }
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  </style>
+</head>
+<body>
+
+<!-- Floating Shapes -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<!-- Header -->
+<header>
+  <div style="display:flex;align-items:center">
+   
+    <h2>Digital Buldhana</h2>
+  </div>
+  <nav>
+    <a href="/final-web/index.html">Home</a>
+   
+  </nav>
+  <div class="lang-switch">
+      <select id="languageSwitcher">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-box">
+  <h3>TERMS OF USE</h3>
+  <p>Home <span>/</span> Terms of Use</p>
+</div>
+
+
+<!-- Terms Content -->
+<section class="section">
+  <div class="card">
+    <h3>SERVICE USE GUIDELINES</h3>
+    <p>What you see on our Services may be protected by one or more laws regarding intellectual property.</p>
+  </div>
+
+  <div class="card">
+    <h3>CONTENT</h3>
+    <p>The Buldhana Municipal Corporation (Citizen Grievance Redressal System) is a web-based enterprise solution that enables the Municipal Corporation to enhance citizen satisfaction through comprehensive service management and efficient service delivery.<br>
+
+<p>Buldhana Municipal Corporation automates the entire complaint process right from registration to closure. It enforces service level policies to ensure that the complaint is attended to by the right department, within the desired timeline, and escalated to higher authorities for their attention and intervention in case of non-compliance with service level/quality. Once a complaint is registered in the system, it is assigned to the concerned area officer dealing with the reported problem. The system automatically sends an SMS to the officer, alerting them about the complaint and prompting the required actions.</p><br>
+
+<p>The officer is expected to resolve the complaint within a specified period. Once a complaint is resolved, the officer marks it as closed in the system. The citizen then receives an SMS confirming the resolution of the complaint. If the citizen is not satisfied, he/she can request to re-open the complaint, which will then be escalated to the higher authority.</p><br>
+
+<p>We reserve the right to remove, edit, modify, or unpublish any content on our platforms without prior notice. Buldhana Municipal Corporation adheres to a fair use policy for content that it receives from other sources. Digital Buldhana and Buldhana Municipal Corporation are not responsible for any financial or personal loss that you may incur as a result of the unauthorized use of your account or account information. We do not hold any liability for the accuracy, inaccuracy, completeness, incompleteness, alteration, modification, or timeliness of the content available on our platform.</p><br>
+
+<p>You agree to use the Service only for lawful purposes and to not violate the rights of third parties. Our Community Guidelines, which are part of these TERMS, contain more information about the acceptable and unacceptable uses of the Service. We maintain zero tolerance for content that does not comply with our community guidelines. Any such unacceptable use, including but not limited to posting or collecting content that is obscene, gory, illegal, threatening, harassing, excessively violent, or promoting harm to self or others, may result in immediate termination of your account and suspension of future access to the Service.</p><br>
+  </div>
+
+  <div class="card">
+    <h3>YOUR CONTENT</h3>
+    <p data-en="By posting content on Digital Buldhana, you give us permission to store, display, and distribute it as needed to provide and improve our Service, including future promotions. You are fully responsible for the content you publish and any risks or legal claims that may arise from it.We may review, edit, or remove content at our discretion and are not liable for what you or others post. Digital Buldhana may include third-party links or advertisements, which we do not control or endorse. We may also display ads alongside your content, and any revenue from them will remain with us." data-hi="डिजिटल बुलढाणा पर सामग्री पोस्ट करके, आप हमें भविष्य के प्रचारों सहित, हमारी सेवाओं को प्रदान करने और बेहतर बनाने के लिए आवश्यकतानुसार इसे संग्रहीत, प्रदर्शित और वितरित करने की अनुमति देते हैं। आपके द्वारा प्रकाशित सामग्री और उससे उत्पन्न होने वाले किसी भी जोखिम या कानूनी दावों के लिए आप पूरी तरह से ज़िम्मेदार हैं।
+हम अपने विवेकानुसार सामग्री की समीक्षा, संपादन या निष्कासन कर सकते हैं और आपके या अन्य लोगों द्वारा पोस्ट की गई सामग्री के लिए उत्तरदायी नहीं हैं। डिजिटल बुलढाणा में तृतीय-पक्ष लिंक या विज्ञापन शामिल हो सकते हैं, जिन्हें हम नियंत्रित या समर्थित नहीं करते हैं। हम आपकी सामग्री के साथ विज्ञापन भी प्रदर्शित कर सकते हैं, और उनसे होने वाली कोई भी आय हमारे पास रहेगी।">By posting content on Digital Buldhana, you give us permission to store, display, and distribute it as needed to provide and improve our Service, including future promotions. You are fully responsible for the content you publish and any risks or legal claims that may arise from it.</p><br>
+
+<p>We may review, edit, or remove content at our discretion and are not liable for what you or others post. Digital Buldhana may include third-party links or advertisements, which we do not control or endorse. We may also display ads alongside your content, and any revenue from them will remain with us.</p><br>
+  </div>
+
+  <div class="card">
+    <h3 data-en="PRIVACY " data-hi="गोपनीयता">PRIVACY</h3>
+    <p data-en="Our Privacy Policy explains our collection and use of information on the Service, including information you may consider personal. You consent to the information practices described in that policy as it may be updated from time to time." data-hi="हमारी गोपनीयता नीति सेवा पर जानकारी के हमारे संग्रह और उपयोग के बारे में बताती है, जिसमें वह जानकारी भी शामिल है जिसे आप व्यक्तिगत मान सकते हैं। आप उस नीति में वर्णित सूचना प्रथाओं के लिए सहमति देते हैं क्योंकि इसे समय-समय पर अद्यतन किया जा सकता है।">Our Privacy Policy explains our collection and use of information on the Service, including information you may consider personal. You consent to the information practices described in that policy as it may be updated from time to time.
+</p>
+  </div>
+
+  <div class="card">
+    <h3 data-en="SECURITY" data-hi="सुरक्षा">SECURITY</h3>
+    <p data-en="We take the security of Digital Buldhana very seriously. We use reasonable measures to protect your account and the data associated with it, but we cannot guarantee that our security measures will never be bypassed. Please notify us immediately if you suspect any compromise of your account.We continuously monitor and work to fix security vulnerabilities in Digital Buldhana. If you discover any security issue or loophole in our service, we would greatly appreciate it if you inform us right away. To report a vulnerability, please email us at support@digitalbuldhana.gov.in." data-hi="हम डिजिटल बुलढाणा की सुरक्षा को बहुत गंभीरता से लेते हैं। हम आपके खाते और उससे जुड़े डेटा की सुरक्षा के लिए उचित उपाय करते हैं, लेकिन हम इस बात की गारंटी नहीं दे सकते कि हमारे सुरक्षा उपायों की कभी अनदेखी नहीं की जाएगी। अगर आपको अपने खाते से किसी भी तरह की छेड़छाड़ का संदेह हो, तो कृपया हमें तुरंत सूचित करें।हम डिजिटल बुलढाणा में सुरक्षा कमज़ोरियों की निरंतर निगरानी करते हैं और उन्हें ठीक करने के लिए प्रयासरत रहते हैं। अगर आपको हमारी सेवा में कोई सुरक्षा समस्या या खामी नज़र आती है, तो हमें तुरंत सूचित करना आपके लिए बहुत अच्छा होगा। किसी भी कमज़ोरी की सूचना देने के लिए, कृपया हमें support@digitalbuldhana.gov.in पर ईमेल करें।">We take the security of Digital Buldhana very seriously. We use reasonable measures to protect your account and the data associated with it, but we cannot guarantee that our security measures will never be bypassed. Please notify us immediately if you suspect any compromise of your account.We continuously monitor and work to fix security vulnerabilities in Digital Buldhana. If you discover any security issue or loophole in our service, we would greatly appreciate it if you inform us right away. To report a vulnerability, please email us at support@digitalbuldhana.gov.in.
+</div>
+
+  <div class="card">
+    <h3 data-en="ELIGIBILITY" data-hi="पात्रता">ELIGIBILITY</h3>
+    <p data-en="As per Indian laws, the user(s) must be at least 12 years of age to be eligible to use our services. In case you are from outside India and below the age of 12, kindly use Digital Buldhana under parental guidance." data-hi="भारतीय कानूनों के अनुसार, हमारी सेवाओं का उपयोग करने के लिए उपयोगकर्ता की आयु कम से कम 12 वर्ष होनी चाहिए। यदि आप भारत से बाहर के हैं और 12 वर्ष से कम आयु के हैं, तो कृपया माता-पिता के मार्गदर्शन में डिजिटल बुलढाणा का उपयोग करें।">As per Indian laws, the user(s) must be at least 12 years of age to be eligible to use our services. In case you are from outside India and below the age of 12, kindly use Digital Buldhana under parental guidance.</p><br>
+    </div>
+
+  <div class="card">
+    <h3 data-en="COPYRIGHT" data-hi="कॉपीराइट">COPYRIGHT</h3>
+    <p data-en="Digital Buldhana respects the intellectual property rights of others and expects users to do the same. If you believe your content has been used in a way that constitutes copyright infringement, please email us at support@digitalbuldhana.gov.in
+ with your details.<br>We may remove infringing or unlawful content without notice and may suspend accounts of repeat offenders." data-hi="डिजिटल बुलढाणा दूसरों के बौद्धिक संपदा अधिकारों का सम्मान करता है और उपयोगकर्ताओं से भी यही अपेक्षा करता है। अगर आपको लगता है कि आपकी सामग्री का उपयोग कॉपीराइट उल्लंघन के रूप में किया गया है, तो कृपया हमें support@digitalbuldhana.gov.in पर ईमेल करें।
+अपनी जानकारी के साथ।
+हम बिना किसी सूचना के उल्लंघनकारी या गैरकानूनी सामग्री को हटा सकते हैं और बार-बार उल्लंघन करने वालों के खाते निलंबित कर सकते हैं।">Digital Buldhana respects the intellectual property rights of others and expects users to do the same. If you believe your content has been used in a way that constitutes copyright infringement, please email us at support@digitalbuldhana.gov.in
+ with your details.<br>
+We may remove infringing or unlawful content without notice and may suspend accounts of repeat offenders.</p><br>
+  </div>
+
+  <div class="card">
+    <h3 data-en="CHANGES TO OUR SERVICE" data-hi="हमारी सेवा में शामिल हों">CHANGES TO OUR SERVICE</h3>
+    <p data-en="Digital Buldhana is always evolving and (hopefully) getting better. As a result, we may change, eliminate or restrict access to our services or any part of our service at any time, for any reason, with or without advance notice. And we may do so with respect to one, some or all of our users." data-hi="डिजिटल बुलढाणा निरंतर विकसित हो रहा है और (उम्मीद है) बेहतर होता जा रहा है। परिणामस्वरूप, हम किसी भी समय, किसी भी कारण से, पूर्व सूचना के साथ या बिना पूर्व सूचना के, अपनी सेवाओं या अपनी सेवा के किसी भी भाग तक पहुँच को बदल सकते हैं, समाप्त कर सकते हैं या प्रतिबंधित कर सकते हैं। और हम ऐसा अपने एक, कुछ या सभी उपयोगकर्ताओं के संबंध में कर सकते हैं।">Digital Buldhana is always evolving and (hopefully) getting better. As a result, we may change, eliminate or restrict access to our services or any part of our service at any time, for any reason, with or without advance notice. And we may do so with respect to one, some or all of our users.</p><br>
+  </div>
+  
+  <div class="card">
+    <h3 data-en="DISCLAIMERS" dat-hi="अस्वीकरण">DISCLAIMERS</h3>
+    <p data-en="Digital Buldhana is provided “as is” without any warranties, express or implied. RMC disclaims all warranties and conditions of merchantability, fitness for a particular purpose and non-infringement." data-hi="डिजिटल बुलढाणा बिना किसी स्पष्ट या निहित वारंटी के जैसा है वैसा प्रदान किया जाता है। आरएमसी व्यापारिकता, किसी विशेष उद्देश्य के लिए उपयुक्तता और गैर-उल्लंघन की सभी वारंटियों और शर्तों का खंडन करता है।" >Digital Buldhana is provided “as is” without any warranties, express or implied. RMC disclaims all warranties and conditions of merchantability, fitness for a particular purpose and non-infringement.</p><br>
+  </div>
+
+  <div class="card">
+    <h3 data-en="To the fullest extent allowed by law, Digital Buldhana shall not be liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill or other intangible losses resulting from: (A) your access to, use of, inability to access or inability to use Smart Ranchi; (B) any third-party conduct or content on Smart Ranchi, including any defamatory, offensive or illegal conduct of third parties; or (C) any unauthorized access, use or alteration of your content." 
+    data-hi="कानून द्वारा अनुमत अधिकतम सीमा तक, डिजिटल बुलढाणा किसी भी अप्रत्यक्ष, आकस्मिक, विशेष, परिणामी या दंडात्मक क्षति, या लाभ या राजस्व की किसी भी हानि, चाहे वह प्रत्यक्ष या अप्रत्यक्ष रूप से हुई हो, या डेटा, उपयोग, सद्भावना या अन्य अमूर्त हानि के लिए उत्तरदायी नहीं होगा, जो (ए) स्मार्ट रांची तक आपकी पहुंच, उपयोग, पहुंचने में असमर्थता या उपयोग करने में असमर्थता के परिणामस्वरूप हो; (बी) स्मार्ट रांची पर किसी तीसरे पक्ष के आचरण या सामग्री, जिसमें तीसरे पक्ष का कोई अपमानजनक, आक्रामक या अवैध आचरण शामिल है; या (सी) आपकी सामग्री का कोई अनधिकृत उपयोग, उपयोग या परिवर्तन।">LIMITATION OF LIABILITY</h3>
+    <p>To the fullest extent allowed by law, Digital Buldhana shall not be liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill or other intangible losses resulting from: (A) your access to, use of, inability to access or inability to use Smart Ranchi; (B) any third-party conduct or content on Smart Ranchi, including any defamatory, offensive or illegal conduct of third parties; or (C) any unauthorized access, use or alteration of your content.</p><br>
+  </div>
+  
+  <!-- 👉 Keep repeating .card for each section (Security, Eligibility, Copyright, etc.) -->
+</section>
+
+<!-- Footer -->
+<footer>
+  © <span id="year"></span> <span data-en="Digital Buldhana. All Rights Reserved." 
+  data-hi=" डिजिटल बुलढाणा। सर्वाधिकार सुरक्षित।">
+ Digital Buldhana. All Rights Reserved.</span>
+</footer>
+
+<script>
+  document.getElementById("year").textContent=new Date().getFullYear();
+
+   // Multilingual support
+    const langSwitcher = document.getElementById("languageSwitcher");
+
+function setLanguage(lang) {
+  localStorage.setItem("language", lang);
+
+  document.querySelectorAll("[data-en]").forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+
+    // If it's an input/textarea placeholder
+    if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+      if (el.hasAttribute("placeholder")) {
+        el.placeholder = text;
+      }
+    } 
+    // If it's an option inside a select
+    else if (el.tagName === "OPTION") {
+      el.textContent = text;
+    } 
+    // For all other elements (p, h2, button, label, etc.)
+    else {
+      el.textContent = text;
+    }
+  });
+}
+
+// Load saved language on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("language") || "en";
+  langSwitcher.value = savedLang;
+  setLanguage(savedLang);
+});
+
+// Change when user selects new language
+langSwitcher.addEventListener("change", (e) => {
+  setLanguage(e.target.value);
+});
+
+</script>
+</body>
+</html>
